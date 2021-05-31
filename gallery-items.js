@@ -71,6 +71,7 @@ const imgMarkup = createImagesMarkup(imgArray);
 const modal = document.querySelector('.js-lightbox');
 const modalImg = document.querySelector('img.lightbox__image');
 const closeButton = document.querySelector('button[data-action="close-lightbox"]');
+const modalOverlay = document.querySelector('.lightbox__overlay')
 listRef.insertAdjacentHTML('afterbegin', imgMarkup);
 
 function createImagesMarkup (imgArray) {
@@ -102,9 +103,10 @@ function handleImgClick(event) {
   console.log(target.getAttribute('data-source'));
   modal.classList.add('is-open');
   modalImg.src = target.getAttribute('data-source');
-}
+};
+modalOverlay.addEventListener('click', handleModalClose);
 closeButton.addEventListener('click', handleModalClose);
 function handleModalClose() {
   modal.classList.remove('is-open');
   modalImg.src = "";
-}
+};
