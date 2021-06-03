@@ -101,8 +101,11 @@ function handleImgClick(event) {
   const target = event.target;
   console.log("event target: ", target);
   console.log(target.getAttribute('data-source'));
-  modal.classList.add('is-open');
-  modalImg.src = target.getAttribute('data-source');
+  if(event.target.classList.contains('gallery__image')) {
+    modal.classList.add('is-open');
+    modalImg.src = target.getAttribute('data-source');
+  }
+  
 };
 modalOverlay.addEventListener('click', handleModalClose);
 closeButton.addEventListener('click', handleModalClose);
